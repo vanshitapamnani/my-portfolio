@@ -12,8 +12,8 @@ function App() {
       {/* <Main />
       <About />
       <Skills />
-      <Projects />
-      <Contact try/>*/}
+      <Projects++ />
+      <Contact/>*/}
     </>
   );
 }
