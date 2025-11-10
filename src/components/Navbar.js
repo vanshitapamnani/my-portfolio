@@ -13,7 +13,7 @@ function NavBar() {
     </nav>
   );
 }
-//     <nav className="navbar++">
+//     <nav className="navbar">
 //       <div className="logo">Vanshita</div>
 //       <ul className="nav-links">
 //         <li>
