@@ -12,6 +12,10 @@ function Intro() {
             CODING, I'M DESIGNING EXPERIENCES THAT TELL STORIES.
           </h3>
           <p> Code. Design. Create. Repeat. ✨</p>
+          <div className="button-container">
+            <button>Contact Me </button>
+            <button>About</button>
+          </div>
         </div>
       </div>
     </>
