@@ -1,5 +1,70 @@
-.about {
-  padding: 15px;
+/* .about {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
-  margin: auto;
+.about-text {
+  margin-top: 100px;
+  max-width: 800px;
+  padding: 45px 25px 25px 45px;
+  font-size: x-large;
+  line-height: 1.8;
+  text-align: center;
+  color: white;
+  font-weight: 70;
+}
+
+.highlight {
+  color: white;
+  font-weight: 620;
+} */
+
+.about {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.about-text {
+  margin-top: 60px;
+  max-width: 750px;
+  padding: 40px 30px;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 60;
+  font-family: "Inter", "Poppins", sans-serif;
+
+  /* Animation properties */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Highlighted text styling */
+.highlight {
+  color: rgb(149, 231, 208);
+  font-weight: 650;
+  transition: color 0.3s ease;
+}
+
+.highlight:hover {
+  color: black;
+}
+
+/* ✅ Keyframes must be outside any selector — top-level only */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

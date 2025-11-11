@@ -72,7 +72,7 @@ h3 {
   line-height: 1.8;
 }
 
-p {
+.intro p {
   /* font-weight: bold; */
   font-size: 1.2rem;
   margin-top: 30px;

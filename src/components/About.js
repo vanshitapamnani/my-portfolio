@@ -2,17 +2,26 @@ import "../styles/about.css";
 
 function About() {
   return (
-    <div>
-      <h4>
-        I’m Vanshita Pamnani, a front-end developer passionate about building
-        visually engaging and performance-driven web applications. With a
-        background in nutrition and design, I bring a unique mix of analytical
-        problem-solving and creative storytelling to my development process. I
-        focus on writing clean, efficient code and crafting interfaces that not
-        only look great but also offer seamless user experiences. Currently, I’m
-        exploring modern frameworks like React and working on projects that help
-        me grow as both a developer and a designer.
-      </h4>
+    <div className="about">
+      <p className="about-text">
+        I’m Vanshita Pamnani, A{" "}
+        <span className="highlight">Front-End Developer </span> Passionate About
+        Building <span className="highlight">Visually Engaging </span> And
+        <span className="highlight"> Performance-Driven</span> Web Applications.
+        With A Background In{" "}
+        <span className="highlight">Nutrition and Dietetics </span>, I Bring A
+        Unique Mix Of{" "}
+        <span className="highlight">Analytical Problem-Solving </span> and
+        <span className="highlight"> Creative Storytelling</span> To My
+        Development Process. I Focus On writing{" "}
+        <span className="highlight"> Clean</span>,{" "}
+        <span className="highlight">Efficient Code</span> and Crafting
+        Interfaces That Not Only Look Great But Also Offer{" "}
+        <span className="highlight">Seamless User Experiences.</span> Currently,
+        I’m Exploring Modern Frameworks Like{" "}
+        <span className="highlight">React </span>and Working On Projects That
+        Help Me Grow As Both A<span className="highlight"> Developer </span> .
+      </p>
     </div>
   );
 }
