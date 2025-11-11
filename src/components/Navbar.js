@@ -1,18 +1,20 @@
 import "../styles/Navbar.css";
 
-function NavBar() {
+function NavBar({ setSection }) {
   return (
     <nav className="navbar">
       <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Skills</li>
-        <li>Projects</li>
-        <li>Contact</li>
+        <li onClick={() => setSection("main")}>Home</li>
+        <li onClick={() => setSection("about")}>About</li>
+        <li onClick={() => setSection("skills")}>Skills</li>
+        <li onClick={() => setSection("projects")}>Projects</li>
+        <li onClick={() => setSection("contact")}>Contact</li>
       </ul>
     </nav>
   );
 }
+
+export default NavBar;
 //     <nav className="navbar">
 //       <div className="logo">Vanshita</div>
 //       <ul className="nav-links">
@@ -34,5 +36,3 @@ function NavBar() {
 //       </ul>
 //     </nav>
 //   );
-
-export default NavBar;

@@ -13,8 +13,7 @@ function Intro() {
           </h3>
           <p> Code. Design. Create. Repeat. ✨</p>
           <div className="button-container">
-            <button>Contact Me </button>
-            <button>About</button>
+            <button>Next </button>
           </div>
         </div>
       </div>
