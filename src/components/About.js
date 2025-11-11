@@ -22,6 +22,11 @@ function About() {
         <span className="highlight">React </span>and Working On Projects That
         Help Me Grow As Both A<span className="highlight"> Developer </span> .
       </p>
+
+      <p>
+        Front-End Developer in Progress | Clinical Dietitian | Bridging Wellness
+        & Tech
+      </p>
     </div>
   );
 }
