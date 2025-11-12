@@ -1,6 +1,6 @@
 import "../styles/about.css";
 
-function About() {
+function About({ handleNext }) {
   return (
     <div className="about">
       <p className="about-text">
@@ -27,6 +27,7 @@ function About() {
         Front-End Developer in Progress | Clinical Dietitian | Bridging Wellness
         & Tech
       </p>
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 }

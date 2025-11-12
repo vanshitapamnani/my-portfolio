@@ -1,6 +1,6 @@
 import "../styles/main.css";
 
-function Intro() {
+function Intro({ handleNext }) {
   return (
     <>
       <div className="profile">
@@ -13,7 +13,7 @@ function Intro() {
           </h3>
           <p> Code. Design. Create. Repeat. ✨</p>
           <div className="button-container">
-            <button>Next </button>
+            <button onClick={handleNext}>Next </button>
           </div>
         </div>
       </div>

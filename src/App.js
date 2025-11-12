@@ -7,15 +7,22 @@ import { useState } from "react";
 //import Contact from "./components/Contact";
 
 function App() {
+  const sections = ["main", "about", "skills", "projects", "contact"];
   const [section, setSection] = useState("main");
+  function handleNext() {
+    const currentIndex = sections.indexOf(section);
+    const nextIndex = (currentIndex + 1) % sections.length;
+
+    setSection(sections[nextIndex]);
+  }
 
   return (
     <div>
       <Navbar setSection={setSection} />
-      {section === "main" && <Main />}
-      {section === "about" && <About />}
+      {section === "main" && <Main handleNext={handleNext} />}
+      {section === "about" && <About handleNext={handleNext} />}
 
-      {/* <Skills />
+      {/* section === "skills" && <Skills handleNext = {handleNext}/>
       <Projects />
       <Contact/> */}
     </div>
