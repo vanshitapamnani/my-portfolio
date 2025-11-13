@@ -1,0 +1,33 @@
+.outer-container {
+  display: flex;
+  /* grid-template-columns: auto auto auto auto; */
+
+  gap: 50px;
+  justify-items: center;
+  margin: 30px;
+  /* background-color: aquamarine; */
+}
+
+.inner-container {
+  border: 2px solid black;
+  border-radius: 5%;
+  /* background-color: pink; */
+  margin: 40px;
+  max-width: 150px;
+  max-height: 200px;
+}
+.inner-container img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  width: 150px;
+  margin: auto;
+}
+
+.inner-container p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

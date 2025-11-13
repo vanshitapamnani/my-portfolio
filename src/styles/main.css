@@ -1,4 +1,4 @@
-img {
+.profile img {
   height: 150px;
   width: 110px;
   border-radius: 10%;
@@ -24,7 +24,7 @@ img {
   transform-style: preserve-3d;
 } */
 
-img:hover {
+.profile img:hover {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
