@@ -15,6 +15,7 @@ function Contact({ handleNext }) {
         <div className="contact-inner">
           <div className="contact-heading">
             <h1> Want To Connect ?</h1>
+            <p></p>
           </div>
 
           {/* <p>📩 Email - pamnanivanshita@gmail.com</p> */}
