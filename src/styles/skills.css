@@ -49,6 +49,8 @@
   padding: 15px;
   width: 150px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0; /* starting point for fade-up */
 }
 
 .inner-container:hover {
@@ -70,5 +72,16 @@
 }
 
 button {
-  margin-top: 30px;
+  margin-top: 60px;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

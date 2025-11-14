@@ -1,0 +1,45 @@
+.contact-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65vh;
+}
+
+.contact-inner {
+  border: 2px solid black;
+  padding: 30px;
+  border-radius: 10px;
+  width: 450px;
+  margin-top: 50px;
+  font-size: large;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  animation: fadeUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.contact-heading {
+  color: white;
+}
+.contact-inner p {
+  margin: 30px 0;
+}
+
+/* Fade animation */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+button {
+  margin: 0;
+}
