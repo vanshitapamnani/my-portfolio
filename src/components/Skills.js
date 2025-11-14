@@ -18,7 +18,7 @@ function Skills({ handleNext }) {
         </div>
         <div className="inner-container">
           <img src="/image/javascript.svg" alt="JAVASCRIPT" />
-          <p>JAVASCRIPT</p>
+          <p>JAVASCRIPT(ES6)</p>
         </div>
 
         <div className="inner-container">
