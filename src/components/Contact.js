@@ -14,8 +14,14 @@ function Contact({ handleNext }) {
       <div className="contact-outer">
         <div className="contact-inner">
           <div className="contact-heading">
-            <h1> Want To Connect ?</h1>
-            <p></p>
+            <h1> Let’s Connect 😄</h1>
+            <p>
+              Let’s build something exceptional together. If you’re looking for
+              a front-end developer who combines clean code with thoughtful
+              design, feel free to contact me. Whether it’s a new project,
+              collaboration, or a quick question, I’m here to help. Send me a
+              message, and I’ll respond at the earliest.
+            </p>
           </div>
 
           {/* <p>📩 Email - pamnanivanshita@gmail.com</p> */}
