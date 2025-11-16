@@ -26,7 +26,11 @@ function Intro({ handleNext }) {
             </div>
           </div>
           {/* Start from here NEXT ...*/}
-          <div className="info-outer"></div>
+          <div className="resume-link">
+            <a href="/resume.pdf" target="_blank">
+              Click Here to Open Resume
+            </a>
+          </div>
           <div className="button-container">
             <button onClick={handleNext}>Next </button>
           </div>
