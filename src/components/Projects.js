@@ -1,4 +1,31 @@
 import "../styles/project.css";
+
+const projectData = [
+  {
+    img: "image/project/pizza.png",
+    title: "React Pizza Menu",
+    role: "Frontend",
+    desc: "A pizza menu webpage built using React.",
+    info: "vv",
+  },
+  {
+    img: "image/project/travel.png",
+    title: "React",
+    role: "Frontend",
+    desc: "Travel- Check List",
+    info: "aaa",
+  },
+
+  {
+    img: "",
+    title: "",
+    desc: "",
+    role: "",
+
+    info: "",
+  },
+];
+
 function Projects() {
   return (
     <>
@@ -14,19 +41,29 @@ function Projects() {
         </p>
       </div>
       <div className="out-container">
-        <div className="flip-card">
-          <div className="flip-card-inner">
-            <div className="flip-card-front">
-              <img src="image/project/pizzaa.png" alt="pizza menu" />
-            </div>
+        {projectData.map((project, index) => (
+          <div className="styling" key={index}>
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front">
+                  <img src={project.img} alt={project.title} />
+                </div>
 
-            <div className="flip-card-back">
-              <h3>React Project</h3>
-              <p>This is a pizza menu webpage.</p>
+                <div className="flip-card-back">
+                  <h3>{project.title}</h3>
+                  <p> {project.info} </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h4>{project.title} </h4>
+              <p>{project.desc}.</p>
+              <p>{project.role}</p>
             </div>
           </div>
-        </div>
+        ))}
       </div>
+      <button> See More</button>
     </>
   );
 }
