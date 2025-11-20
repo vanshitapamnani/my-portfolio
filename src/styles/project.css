@@ -3,6 +3,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 }
 
 .para {
@@ -29,7 +30,7 @@ h1 {
   gap: 70px;
 
   max-width: 1200px; /* keeps cards centered */
-  margin: 50px auto; /* centers the grid */
+  margin: 30px auto; /* centers the grid */
   padding: 20px; /* smaller padding looks cleaner */
   width: 90%;
 }
@@ -120,6 +121,12 @@ h1 {
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  display: flex;
   justify-content: center;
   align-items: center;
 }

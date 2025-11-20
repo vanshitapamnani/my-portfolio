@@ -17,10 +17,10 @@ const projectData = [
   },
 
   {
-    img: "",
-    title: "",
-    desc: "",
-    role: "",
+    img: "image/project/BillSplit.png",
+    title: "React",
+    desc: "Split Bill with friends",
+    role: "Frontend",
 
     info: "",
   },
@@ -63,7 +63,9 @@ function Projects() {
           </div>
         ))}
       </div>
-      <button> See More</button>
+      <div className="btn">
+        <button> See More</button>
+      </div>
     </>
   );
 }
