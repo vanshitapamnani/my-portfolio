@@ -4,35 +4,63 @@ import "../styles/project.css";
 const projectData = [
   {
     img: "image/project/pizza.png",
-    title: "React Pizza Menu",
-    role: "Frontend",
-    desc: "A pizza menu webpage built using React.",
-    info: "vv",
+    title: "Pizza Menu",
+    role: "React Development",
+    info: "A dynamic pizza menu application built with React, showcasing reusable components and props handling.",
   },
   {
     img: "image/project/travel.png",
-    title: "React",
-    role: "Frontend",
-    desc: "Travel- Check List",
-    info: "aaa",
+    title: "Travel Checklist",
+    role: "React Development",
+    info: "A smart checklist app to manage and track travel packing lists using React state management.",
   },
 
   {
     img: "image/project/BillSplit.png",
-    title: "React",
-    desc: "Split Bill with friends",
-    role: "Frontend",
-
-    info: "",
+    title: "Split Bill with Friends",
+    role: "React Development",
+    info: "A bill-splitting tool built using React that helps friends divide expenses fairly with interactive UI.",
   },
 
   {
-    img: "image/project/pizza.png",
-    title: "React Pizza Menu",
-    role: "Frontend",
-    desc: "A pizza menu webpage built using React.",
-    info: "vv",
+    img: "image/project/DrumKit.png",
+    title: "Interactive Drum Kit",
+    role: "JavaScript Development",
+    info: "A fun drum kit app built with HTML, CSS, and JavaScript that plays sounds based on keyboard and UI actions.",
   },
+
+  {
+    img: "image/project/SimonGame.png",
+    title: "Simon Memory Game",
+    role: "JavaScript Development",
+    info: "A classic memory game created using jQuery and DOM manipulation to enhance game logic and user engagement.",
+  },
+
+  {
+    img: "image/project/TicTacToe.png",
+    title: "Tic Tac Toe Game",
+    role: "JavaScript Development",
+    info: "A two-player Tic Tac Toe game using HTML, CSS, and JavaScript with win detection logic.",
+  },
+
+  {
+    img: "image/project/DiceGame.png",
+    title: "Dice Game",
+    role: "Frontend (JavaScript)",
+    info: "A simple two-player dice rolling game built with HTML, CSS, and JavaScript, using DOM manipulation to update scores and determine the winner.",
+  },
+  {
+    img: "image/project/TinDog.png",
+    title: "TinDog Landing Page",
+    role: "Frontend (Bootstrap)",
+    info: "A responsive landing page built using HTML, CSS, and Bootstrap, designed for a fictional dog-matching startup.",
+  },
+  // {
+  //   img: "image/project/DiceGame.png",
+  //   title: "",
+  //   role: "",
+  //   info: "",
+  // },
 ];
 
 function Projects() {
@@ -68,8 +96,8 @@ function Projects() {
             </div>
             <div>
               <h4>{project.title} </h4>
-              <p>{project.desc}.</p>
-              <p>{project.role}</p>
+              <p> - {project.role}</p>
+              {/* <p>{project.desc}.</p> */}
             </div>
           </div>
         ))}

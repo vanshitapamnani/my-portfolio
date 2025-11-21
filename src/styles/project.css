@@ -56,8 +56,8 @@ h1 {
 
 .styling-text {
   width: 100%;
-  text-align: left;
-  margin-top: 0px;
+  text-align: center;
+  margin: 5px;
 }
 
 .styling h4 {
@@ -73,7 +73,7 @@ h1 {
 .flip-card {
   width: 100%;
   max-width: 400px;
-  height: 230px;
+  height: 250px;
   perspective: 1000px; /* important for 3D flip */
   padding: 20px;
 }
@@ -123,6 +123,7 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .btn {
