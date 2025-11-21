@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/project.css";
 
 const projectData = [
@@ -24,9 +25,19 @@ const projectData = [
 
     info: "",
   },
+
+  {
+    img: "image/project/pizza.png",
+    title: "React Pizza Menu",
+    role: "Frontend",
+    desc: "A pizza menu webpage built using React.",
+    info: "vv",
+  },
 ];
 
 function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleProjects = showAll ? projectData : projectData.slice(0, 3);
   return (
     <>
       <div className="project">
@@ -41,7 +52,7 @@ function Projects() {
         </p>
       </div>
       <div className="out-container">
-        {projectData.map((project, index) => (
+        {visibleProjects.map((project, index) => (
           <div className="styling" key={index}>
             <div className="flip-card">
               <div className="flip-card-inner">
@@ -64,7 +75,9 @@ function Projects() {
         ))}
       </div>
       <div className="btn">
-        <button> See More</button>
+        <button onClick={() => setShowAll(!showAll)}>
+          {showAll ? "Show Less" : "Show More"}
+        </button>
       </div>
     </>
   );
