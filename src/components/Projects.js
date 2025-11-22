@@ -41,6 +41,7 @@ const projectData = [
     title: "Tic Tac Toe Game",
     role: "- JavaScript Development",
     info: "A two-player Tic Tac Toe game using HTML, CSS, and JavaScript with win detection logic.",
+    link: "https://vanshitapamnani.github.io/tic-tac-toe-game/",
   },
 
   {
@@ -88,24 +89,31 @@ function Projects() {
       </div>
       <div className="out-container">
         {visibleProjects.map((project, index) => (
-          <div className="styling" key={index}>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <img src={project.img} alt={project.title} />
-                </div>
+          <a
+            key={index}
+            href={project.link || "#"}
+            target={project.link ? "_blank" : "_self"}
+            rel={project.link ? "noopener noreferrer" : undefined}
+            style={{ textDecoration: "none", color: "inherit" }}>
+            <div className="styling" key={index}>
+              <div className="flip-card">
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <img src={project.img} alt={project.title} />
+                  </div>
 
-                <div className="flip-card-back">
-                  <h3>{project.title}</h3>
-                  <p> {project.info} </p>
+                  <div className="flip-card-back">
+                    <h3>{project.title}</h3>
+                    <p> {project.info} </p>
+                  </div>
                 </div>
               </div>
+              <div>
+                <h4>{project.title} </h4>
+                <p> {project.role}</p>
+              </div>
             </div>
-            <div>
-              <h4>{project.title} </h4>
-              <p> {project.role}</p>
-            </div>
-          </div>
+          </a>
         ))}
       </div>
       <div className="btn">
