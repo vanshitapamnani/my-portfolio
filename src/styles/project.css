@@ -131,3 +131,16 @@ h1 {
   justify-content: center;
   align-items: center;
 }
+.progress-bar {
+  height: 6px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 8px;
+  border-radius: 4px;
+}
+
+.progress {
+  height: 6px;
+  background: #ffe45c;
+  border-radius: 4px;
+}
