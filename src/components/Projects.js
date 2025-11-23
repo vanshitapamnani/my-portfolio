@@ -7,12 +7,14 @@ const projectData = [
     title: "Pizza Menu",
     role: "- React Development",
     info: "A dynamic pizza menu application built with React, showcasing reusable components and props handling.",
+    link: "https://vanshitapamnani.github.io/Pizza_menu/",
   },
   {
     img: "image/project/travel.png",
     title: "Travel Checklist",
     role: "- React Development",
     info: "A smart checklist app to manage and track travel packing lists using React state management.",
+    link: "https://vanshitapamnani.github.io/travel-list/",
   },
 
   {
@@ -20,6 +22,7 @@ const projectData = [
     title: "Split Bill with Friends",
     role: "- React Development",
     info: "A bill-splitting tool built using React that helps friends divide expenses fairly with interactive UI.",
+    link: "https://vanshitapamnani.github.io/eat_and_split/",
   },
 
   {
@@ -27,6 +30,7 @@ const projectData = [
     title: "Interactive Drum Kit",
     role: "- JavaScript Development",
     info: "A fun drum kit app built with HTML, CSS, and JavaScript that plays sounds based on keyboard and UI actions.",
+    link: "https://vanshitapamnani.github.io/Drum_Kit/",
   },
 
   {
@@ -34,6 +38,7 @@ const projectData = [
     title: "Simon Memory Game",
     role: "- JavaScript Development",
     info: "A classic memory game created using jQuery and DOM manipulation to enhance game logic and user engagement.",
+    link: "https://vanshitapamnani.github.io/simon_challenge_game/",
   },
 
   {
@@ -49,12 +54,14 @@ const projectData = [
     title: "Dice Game",
     role: "- Frontend (JavaScript)",
     info: "A simple two-player dice rolling game built with HTML, CSS, and JavaScript, using DOM manipulation to update scores and determine the winner.",
+    link: "https://vanshitapamnani.github.io/Dice_Game/",
   },
   {
     img: "image/project/TinDog.png",
     title: "TinDog Landing Page",
     role: "- Frontend (Bootstrap)",
     info: "A responsive landing page built using HTML, CSS, and Bootstrap, designed for a fictional dog-matching startup.",
+    link: "https://vanshitapamnani.github.io/Tin_Dog/",
   },
   {
     img: "image/plus.svg",
