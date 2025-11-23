@@ -63,12 +63,12 @@ const projectData = [
     info: "A responsive landing page built using HTML, CSS, and Bootstrap, designed for a fictional dog-matching startup.",
     link: "https://vanshitapamnani.github.io/Tin_Dog/",
   },
-  {
-    img: "image/plus.svg",
-    title: "Add New Project",
-    role: "",
-    info: "",
-  },
+  // {
+  //   img: "image/plus.svg",
+  //   title: "Add New Project",
+  //   role: "",
+  //   info: "",
+  // },
 
   // {
   //   img: "image/project/DiceGame.png",
@@ -80,7 +80,9 @@ const projectData = [
 
 function Projects() {
   const [showAll, setShowAll] = useState(false);
-  const visibleProjects = showAll ? projectData : projectData.slice(0, 3);
+  const [showForm, setShowForm] = useState(false);
+  const [projects, setProjects] = useState(projectData);
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
   return (
     <>
       <div className="project">
@@ -124,12 +126,70 @@ function Projects() {
         ))}
       </div>
       <div className="btn">
-        <button onClick={() => setShowAll(!showAll)}>
-          {showAll ? "Show Less" : "Show More"}
-        </button>
+        {!showForm && (
+          <button onClick={() => setShowAll(!showAll)}>
+            {showAll ? "Show Less" : "Show More"}
+          </button>
+        )}
+        {!showAll && (
+          <button onClick={() => setShowForm(!showForm)}>
+            {showForm ? "cancel" : "Add New Project"}
+          </button>
+        )}
+      </div>
+      <div>
+        {showForm && (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+
+              const newProject = {
+                img: e.target.img.value || "uploadImg.jpg",
+                title: e.target.title.value,
+                role: e.target.role.value,
+                info: e.target.info.value,
+                link: e.target.link.value,
+              };
+
+              setProjects([...projects, newProject]);
+              e.target.reset();
+              setShowForm(false);
+            }}
+            style={{
+              backgroundColor: "white",
+              margin: "40px auto",
+              width: "400px",
+              display: "grid",
+              gap: "10px",
+              padding: 30,
+            }}>
+            <label>Image Path:</label>
+            <input
+              type="text"
+              name="img"
+              placeholder="Please add your Image Path here"
+            />
+            <label> Project Title:</label>
+            <input type="text" name="title" placeholder="Title" required />
+            <label> Project Category:</label>
+            <input type="text" name="role" placeholder="Category" required />
+            <label> Project Info:</label>
+            <input type="text" name="info" placeholder="Short Info" required />
+            <label> Project Link:</label>
+            <input
+              type="text"
+              name="link"
+              placeholder="Link (GitHub)"
+              required
+            />
+            <button type="submit" style={{ backgroundColor: "black" }}>
+              Save Project
+            </button>
+          </form>
+        )}
       </div>
 
-      {!showAll && <InProgress />}
+      {showForm || !showAll || (!showAll && <InProgress />)}
     </>
   );
 }
