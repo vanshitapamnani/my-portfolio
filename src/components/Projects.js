@@ -144,7 +144,7 @@ function Projects() {
               e.preventDefault();
 
               const newProject = {
-                img: e.target.img.value || "uploadImg.jpg",
+                img: e.target.img.value || "uploadImg.jpeg",
                 title: e.target.title.value,
                 role: e.target.role.value,
                 info: e.target.info.value,
