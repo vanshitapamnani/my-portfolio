@@ -1,6 +1,15 @@
 import { useState } from "react";
 import "../styles/project.css";
 
+// "image/project/pizza.png",
+//   "image/project/travel.png",
+//   "image/project/BillSplit.png";
+// "image/project/DrumKit.png",
+//   image / project / SimonGame.png,
+//   image / project / TicTacToe.png;
+// mage / project / DiceGame.png;
+// image / project / TinDog.png;
+
 const projectData = [
   {
     img: "image/project/pizza.png",
@@ -82,7 +91,9 @@ function Projects() {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState(projectData);
+
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <>
       <div className="project">
@@ -145,6 +156,7 @@ function Projects() {
 
               const newProject = {
                 img: e.target.img.value || "uploadImg.jpeg",
+
                 title: e.target.title.value,
                 role: e.target.role.value,
                 info: e.target.info.value,
@@ -153,6 +165,7 @@ function Projects() {
 
               setProjects([...projects, newProject]);
               e.target.reset();
+
               setShowForm(false);
             }}
             style={{
