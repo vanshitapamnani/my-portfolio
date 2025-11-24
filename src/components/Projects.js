@@ -57,7 +57,7 @@ const projectData = [
     link: "https://vanshitapamnani.github.io/Dice_Game/",
   },
   {
-    img: "/image/project/TinDog.png",
+    img: "image/project/TinDog.png",
     title: "TinDog Landing Page",
     role: "- Frontend (Bootstrap)",
     info: "A responsive landing page built using HTML, CSS, and Bootstrap, designed for a fictional dog-matching startup.",
@@ -78,7 +78,7 @@ const projectData = [
   // },
 ];
 
-function Projects() {
+function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState(projectData);
@@ -194,6 +194,10 @@ function Projects() {
       </div>
 
       {showForm || !showAll || (!showAll && <InProgress />)}
+
+      <div className="button-container">
+        <button onClick={handleNext}>Next </button>
+      </div>
     </>
   );
 }
