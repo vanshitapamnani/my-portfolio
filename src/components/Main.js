@@ -5,7 +5,7 @@ function Intro({ handleNext }) {
   return (
     <>
       <div className="profile">
-        <img src="/image/profile.png" alt="profile" />
+        <img src="image/profile.png" alt="profile" />
         <p className="name">Vanshita Pamnani</p>
         <div className="intro">
           <h3>
@@ -27,7 +27,7 @@ function Intro({ handleNext }) {
           </div>
           {/* Start from here NEXT ...*/}
           <div className="resume-link">
-            <a href="/resume.pdf" target="_blank">
+            <a href="resume.pdf" target="_blank">
               Click Here to Open Resume <span>↗</span>
             </a>
           </div>

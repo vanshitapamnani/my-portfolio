@@ -10,7 +10,7 @@ const projectData = [
     link: "https://vanshitapamnani.github.io/Pizza_menu/",
   },
   {
-    img: "/image/project/travel.png",
+    img: "image/project/travel.png",
     title: "Travel Checklist",
     role: "- React Development",
     info: "A smart checklist app to manage and track travel packing lists using React state management.",
@@ -18,7 +18,7 @@ const projectData = [
   },
 
   {
-    img: "/image/project/BillSplit.png",
+    img: "image/project/BillSplit.png",
     title: "Split Bill with Friends",
     role: "- React Development",
     info: "A bill-splitting tool built using React that helps friends divide expenses fairly with interactive UI.",
@@ -26,7 +26,7 @@ const projectData = [
   },
 
   {
-    img: "/image/project/DrumKit.png",
+    img: "image/project/DrumKit.png",
     title: "Interactive Drum Kit",
     role: "- JavaScript Development",
     info: "A fun drum kit app built with HTML, CSS, and JavaScript that plays sounds based on keyboard and UI actions.",
@@ -34,7 +34,7 @@ const projectData = [
   },
 
   {
-    img: "/image/project/SimonGame.png",
+    img: "image/project/SimonGame.png",
     title: "Simon Memory Game",
     role: "- JavaScript Development",
     info: "A classic memory game created using jQuery and DOM manipulation to enhance game logic and user engagement.",
@@ -42,7 +42,7 @@ const projectData = [
   },
 
   {
-    img: "/image/project/TicTacToe.png",
+    img: "image/project/TicTacToe.png",
     title: "Tic Tac Toe Game",
     role: "- JavaScript Development",
     info: "A two-player Tic Tac Toe game using HTML, CSS, and JavaScript with win detection logic.",
@@ -50,7 +50,7 @@ const projectData = [
   },
 
   {
-    img: "/image/project/DiceGame.png",
+    img: "image/project/DiceGame.png",
     title: "Dice Game",
     role: "- Frontend (JavaScript)",
     info: "A simple two-player dice rolling game built with HTML, CSS, and JavaScript, using DOM manipulation to update scores and determine the winner.",

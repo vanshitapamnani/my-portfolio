@@ -5,24 +5,24 @@ function Skills({ handleNext }) {
     <>
       <div className="outer-container">
         <div className="inner-container">
-          <img src="/image/html5.svg" alt="HTML" />
+          <img src="image/html5.svg" alt="HTML" />
           <p>HTML</p>
         </div>
         <div className="inner-container">
-          <img src="/image/css.svg" alt="CSS" />
+          <img src="image/css.svg" alt="CSS" />
           <p>CSS</p>
         </div>
         <div className="inner-container">
-          <img src="/image/bootstrap.svg" alt="BOOTSTRAP" />
+          <img src="image/bootstrap.svg" alt="BOOTSTRAP" />
           <p>BOOTSTRAP</p>
         </div>
         <div className="inner-container">
-          <img src="/image/javascript.svg" alt="JAVASCRIPT" />
+          <img src="image/javascript.svg" alt="JAVASCRIPT" />
           <p>JAVASCRIPT(ES6)</p>
         </div>
 
         <div className="inner-container">
-          <img src="/image/react.svg" alt="REACT" />
+          <img src="image/react.svg" alt="REACT" />
           <p>REACT</p>
         </div>
       </div>
