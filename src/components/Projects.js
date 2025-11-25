@@ -3,7 +3,7 @@ import "../styles/project.css";
 
 const projectData = [
   {
-    img: "/image/project/pizza.png",
+    img: "image/project/pizza.png",
     title: "Pizza Menu",
     role: "- React Development",
     info: "A dynamic pizza menu application built with React, showcasing reusable components and props handling.",
