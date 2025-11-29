@@ -1,5 +1,6 @@
 import "../styles/main.css";
 import { SocialIcon } from "react-social-icons";
+import { FiExternalLink } from "react-icons/fi";
 
 function Intro({ handleNext }) {
   return (
@@ -28,7 +29,7 @@ function Intro({ handleNext }) {
           {/* Start from here NEXT ...*/}
           <div className="resume-link">
             <a href="resume.pdf" target="_blank">
-              Click Here to Open Resume <span>↗</span>
+              View Resume <FiExternalLink />
             </a>
           </div>
           <div className="button-container">
