@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/project.css";
 
 const projectData = [
@@ -81,9 +81,27 @@ const projectData = [
 function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [projects, setProjects] = useState(projectData);
+  const [projects, setProjects] = useState([]);
 
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const res = await fetch("http://localhost:5003/api/projects");
+        const data = await res.json();
+        console.log("FETCHED PROJECTS : ", data);
+        setProjects(data);
+      } catch (err) {
+        console.error("ERROR IN FETCHING PROJECTS : ", err);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+  function saveClick() {
+    console.log("project has been saved!");
+  }
 
   return (
     <>
@@ -142,7 +160,7 @@ function Projects({ handleNext }) {
       <div>
         {showForm && (
           <form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
 
               const newProject = {
@@ -154,10 +172,23 @@ function Projects({ handleNext }) {
                 link: e.target.link.value,
               };
 
-              setProjects([...projects, newProject]);
-              e.target.reset();
+              try {
+                const res = await fetch("http://localhost:5003/api/projects", {
+                  method: "POST",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify(newProject),
+                });
+                const data = await res.json();
+                console.log(data);
+                setProjects((prev) => [...prev, data.project]);
+                e.target.reset();
 
-              setShowForm(false);
+                setShowForm(false);
+              } catch (err) {
+                console.error("ERROR in Saving project: ", err);
+              }
             }}
             style={{
               backgroundColor: "white",
@@ -186,7 +217,10 @@ function Projects({ handleNext }) {
               placeholder="Link (GitHub)"
               required
             />
-            <button type="submit" style={{ backgroundColor: "black" }}>
+            <button
+              type="submit"
+              style={{ backgroundColor: "black" }}
+              onClick={saveClick}>
               Save Project
             </button>
           </form>
