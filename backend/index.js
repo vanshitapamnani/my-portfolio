@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,14 +9,17 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(
-    "mongodb+srv://pamnanivanshita_db_user:iQi-CZ!SpJ3t6ct@projects.eazunnn.mongodb.net/portfolio?appName=projects"
-  )
+  .connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected"))
+
   .catch((err) => console.log(err));
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });
+
+console.log("MONGO_URI from .env:", process.env.MONGO_URI);
+
 app.use("/api/projects", require("./routes/projectRoutes"));
 
-app.listen(5003, () => console.log("Server running on port 5003"));
+const PORT = process.env.PORT || 5003;
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
