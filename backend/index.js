@@ -17,8 +17,6 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
-console.log("MONGO_URI from .env:", process.env.MONGO_URI);
-
 app.use("/api/projects", require("./routes/projectRoutes"));
 
 const PORT = process.env.PORT || 5003;
