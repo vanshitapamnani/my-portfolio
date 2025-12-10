@@ -88,7 +88,9 @@ function Projects({ handleNext }) {
   useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch("http://localhost:5003/api/projects");
+        const res = await fetch(
+          "https://portfolio-backend-3-hm5b.onrender.com/api/projects"
+        );
         const data = await res.json();
         console.log("FETCHED PROJECTS : ", data);
         setProjects(data);
@@ -173,13 +175,16 @@ function Projects({ handleNext }) {
               };
 
               try {
-                const res = await fetch("http://localhost:5003/api/projects", {
-                  method: "POST",
-                  headers: {
-                    "content-type": "application/json",
-                  },
-                  body: JSON.stringify(newProject),
-                });
+                const res = await fetch(
+                  "https://portfolio-backend-3-hm5b.onrender.com/api/projects",
+                  {
+                    method: "POST",
+                    headers: {
+                      "content-type": "application/json",
+                    },
+                    body: JSON.stringify(newProject),
+                  }
+                );
                 const data = await res.json();
                 console.log(data);
                 setProjects((prev) => [...prev, data.project]);
