@@ -82,6 +82,7 @@ function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [base64Image, setBase64Image] = useState("");
 
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
@@ -105,6 +106,14 @@ function Projects({ handleNext }) {
     console.log("project has been saved!");
   }
 
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  }
   return (
     <>
       <div className="project">
@@ -139,9 +148,25 @@ function Projects({ handleNext }) {
                   </div>
                 </div>
               </div>
+
+              {/* {project info} */}
               <div>
                 <h4>{project.title} </h4>
                 <p> {project.role}</p>
+                {project.progress !== undefined && (
+                  <div className="progress-bar">
+                    <div
+                      className="progress"
+                      style={{ width: `${project.progress}%` }}></div>
+                  </div>
+                )}
+                {project.stage && (
+                  <p style={{ marginTop: "5px", fontWeight: "600" }}>
+                    {project.stage === "completed"
+                      ? "Completed"
+                      : `🚧 In Progress (${project.progress}%)`}
+                  </p>
+                )}
               </div>
             </div>
           </a>
@@ -164,15 +189,24 @@ function Projects({ handleNext }) {
           <form
             onSubmit={async (e) => {
               e.preventDefault();
+              const finalImage = base64Image || "/uploadImg.jpeg";
 
               const newProject = {
-                img: e.target.img.value || "uploadImg.jpeg",
+                // img: e.target.img.value || "uploadImg.jpeg",
+                img: finalImage,
 
                 title: e.target.title.value,
                 role: e.target.role.value,
                 info: e.target.info.value,
                 link: e.target.link.value,
+                stage: e.target.stage.value,
+                progress:
+                  e.target.stage.value === "Completed"
+                    ? 100
+                    : Number(e.target.progress.value),
               };
+
+              console.log("submitting project:", newProject);
 
               try {
                 const res = await fetch(
@@ -189,7 +223,7 @@ function Projects({ handleNext }) {
                 console.log(data);
                 setProjects((prev) => [...prev, data.project]);
                 e.target.reset();
-
+                setBase64Image("");
                 setShowForm(false);
               } catch (err) {
                 console.error("ERROR in Saving project: ", err);
@@ -203,11 +237,24 @@ function Projects({ handleNext }) {
               gap: "10px",
               padding: 30,
             }}>
-            <label>Image Path:</label>
+            <label>Upload Image:</label>
             <input
-              type="text"
-              name="img"
+              type="file"
+              accept="image/*"
               placeholder="Please add your Image Path here"
+              onChange={async (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                  const base64 = await convertToBase64(file);
+                  setBase64Image(base64);
+                }
+              }}
+
+              // {base64Image && (
+              //   <img src = {base64Image}
+              //   alt = "preview"
+              //   style ={{width : "100%" , borderRadius :"10px" , marginTop :"10px"}} />
+              // )}
             />
             <label> Project Title:</label>
             <input type="text" name="title" placeholder="Title" required />
@@ -219,9 +266,23 @@ function Projects({ handleNext }) {
             <input
               type="text"
               name="link"
-              placeholder="Link (GitHub)"
+              placeholder="Link (GitHub Repo)"
               required
             />
+
+            <label> Status :</label>
+            <select name="stage">
+              <option value="Completed"> Completed</option>
+              <option value="In-Progress"> In Progress</option>
+            </select>
+
+            <label> Progress % : </label>
+            <input
+              type="number"
+              name="progress"
+              placeholder="0-100"
+              min="0"
+              max="100"></input>
             <button
               type="submit"
               style={{ backgroundColor: "black" }}
@@ -232,7 +293,8 @@ function Projects({ handleNext }) {
         )}
       </div>
 
-      {showForm || !showAll || (!showAll && <InProgress />)}
+      {/* {showForm || !showAll || (!showAll && <InProgress />)} */}
+      {/* <InProgress /> */}
 
       <div className="button-container">
         <button onClick={handleNext}>Next </button>
@@ -241,57 +303,57 @@ function Projects({ handleNext }) {
   );
 }
 
-const inProgressProject = [
-  {
-    img: "image/project/TicTacToe.png",
-    title: "testing",
-    role: "inprogress",
-    progress: 70,
-    info: "abcd",
-  },
-];
+// const inProgressProject = [
+//   {
+//     img: "image/project/TicTacToe.png",
+//     title: "testing",
+//     role: "inprogress",
+//     progress: 70,
+//     info: "abcd",
+//   },
+// ];
 
-function InProgress() {
-  return (
-    <>
-      <div className="project">
-        <h1>In-progress Projects 🚧</h1>
-      </div>
-      <div className="para">
-        <p>Projects I’m currently working on and still improving ✨</p>
-      </div>
-      <div className="out-container">
-        {inProgressProject.map((project, index) => (
-          <div className="styling" key={index}>
-            <div className="flip-card">
-              <div className="flip-card-inner">
-                <div className="flip-card-front">
-                  <img src={project.img} alt={project.title} />
-                </div>
+// function InProgress() {
+//   return (
+//     <>
+//       <div className="project">
+//         <h1>In-progress Projects 🚧</h1>
+//       </div>
+//       <div className="para">
+//         <p>Projects I’m currently working on and still improving ✨</p>
+//       </div>
+//       <div className="out-container">
+//         {inProgressProject.map((project, index) => (
+//           <div className="styling" key={index}>
+//             <div className="flip-card">
+//               <div className="flip-card-inner">
+//                 <div className="flip-card-front">
+//                   <img src={project.img} alt={project.title} />
+//                 </div>
 
-                <div className="flip-card-back">
-                  <h3>{project.title}</h3>
-                  <p> {project.info} </p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4>{project.title} </h4>
-              <p> {project.role}</p>
-              <div className="progress-bar">
-                <div
-                  className="progress"
-                  style={{ width: `${project.progress}%` }}></div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      {/* <div className="btn">
-        <button> More</button>
-      </div> */}
-    </>
-  );
-}
+//                 <div className="flip-card-back">
+//                   <h3>{project.title}</h3>
+//                   <p> {project.info} </p>
+//                 </div>
+//               </div>
+//             </div>
+//             <div>
+//               <h4>{project.title} </h4>
+//               <p> {project.role}</p>
+//               <div className="progress-bar">
+//                 <div
+//                   className="progress"
+//                   style={{ width: `${project.progress}%` }}></div>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//       {/* <div className="btn">
+//         <button> More</button>
+//       </div> */}
+//     </>
+//   );
+// }
 
 export default Projects;
