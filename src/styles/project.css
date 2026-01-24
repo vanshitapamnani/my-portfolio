@@ -145,3 +145,26 @@ h1 {
   background: #ffe45c;
   border-radius: 4px;
 }
+
+.action-btns {
+  display: flex;
+  justify-content: center;
+
+  gap: 10px;
+  /* background-color: aliceblue; */
+}
+
+.action-btn1 {
+  background-color: #397570;
+}
+
+.action-btn2 {
+  background-color: #397570;
+}
+
+.a-link {
+  color: solid black;
+  text-decoration: none;
+  margin-top: 10px;
+  font-family: cursive;
+}

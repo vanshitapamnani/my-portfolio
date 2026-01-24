@@ -114,6 +114,12 @@ function Projects({ handleNext }) {
       reader.onerror = (error) => reject(error);
     });
   }
+  // function handleEdit() {
+  //   return;
+  // }
+
+  // function handleDelete() {}
+
   return (
     <>
       <div className="project">
@@ -129,47 +135,53 @@ function Projects({ handleNext }) {
       </div>
       <div className="out-container">
         {visibleProjects.map((project, index) => (
-          <a
-            key={index}
-            href={project.link || "#"}
-            target={project.link ? "_blank" : "_self"}
-            rel={project.link ? "noopener noreferrer" : undefined}
-            style={{ textDecoration: "none", color: "inherit" }}>
-            <div className="styling" key={index}>
-              <div className="flip-card">
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <img src={project.img} alt={project.title} />
-                  </div>
+          <div className="styling" key={index}>
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front">
+                  <img src={project.img} alt={project.title} />
+                </div>
 
-                  <div className="flip-card-back">
-                    <h3>{project.title}</h3>
-                    <p> {project.info} </p>
-                  </div>
+                <div className="flip-card-back">
+                  <h3>{project.title}</h3>
+                  <p> {project.info} </p>
+                  <a
+                    key={index}
+                    href={project.link || "#"}
+                    target={project.link ? "_blank" : "_self"}
+                    rel={project.link ? "noopener noreferrer" : undefined}
+                    // style={{ textDecoration: "none", color: "inherit" }}
+                    className="a-link">
+                    Click to Visit Project
+                  </a>
                 </div>
               </div>
+            </div>
 
-              {/* {project info} */}
-              <div>
-                <h4>{project.title} </h4>
-                <p> {project.role}</p>
-                {project.progress !== undefined && (
-                  <div className="progress-bar">
-                    <div
-                      className="progress"
-                      style={{ width: `${project.progress}%` }}></div>
-                  </div>
-                )}
-                {project.stage && (
-                  <p style={{ marginTop: "5px", fontWeight: "600" }}>
-                    {project.stage === "completed"
-                      ? "Completed"
-                      : `🚧 In Progress (${project.progress}%)`}
-                  </p>
-                )}
+            {/* {project info} */}
+            <div>
+              <h4>{project.title} </h4>
+              <p> {project.role}</p>
+              {project.progress !== undefined && (
+                <div className="progress-bar">
+                  <div
+                    className="progress"
+                    style={{ width: `${project.progress}%` }}></div>
+                </div>
+              )}
+              {project.stage && (
+                <p style={{ marginTop: "5px", fontWeight: "600" }}>
+                  {project.stage === "completed"
+                    ? "Completed"
+                    : `🚧 In Progress (${project.progress}%)`}
+                </p>
+              )}
+              <div className="action-btns">
+                <button className="action-btn1">🗑️</button>
+                <button className="action-btn2">✏️</button>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
       <div className="btn">
