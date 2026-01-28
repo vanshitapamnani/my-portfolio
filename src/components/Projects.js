@@ -1,83 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/project.css";
 
-// const projectData = [
-//   {
-//     img: "image/project/pizza.png",
-//     title: "Pizza Menu",
-//     role: "- React Development",
-//     info: "A dynamic pizza menu application built with React, showcasing reusable components and props handling.",
-//     link: "https://vanshitapamnani.github.io/Pizza_menu/",
-//   },
-//   {
-//     img: "image/project/travel.png",
-//     title: "Travel Checklist",
-//     role: "- React Development",
-//     info: "A smart checklist app to manage and track travel packing lists using React state management.",
-//     link: "https://vanshitapamnani.github.io/travel-list/",
-//   },
-
-//   {
-//     img: "image/project/BillSplit.png",
-//     title: "Split Bill with Friends",
-//     role: "- React Development",
-//     info: "A bill-splitting tool built using React that helps friends divide expenses fairly with interactive UI.",
-//     link: "https://vanshitapamnani.github.io/eat_and_split/",
-//   },
-
-//   {
-//     img: "image/project/DrumKit.png",
-//     title: "Interactive Drum Kit",
-//     role: "- JavaScript Development",
-//     info: "A fun drum kit app built with HTML, CSS, and JavaScript that plays sounds based on keyboard and UI actions.",
-//     link: "https://vanshitapamnani.github.io/Drum_Kit/",
-//   },
-
-//   {
-//     img: "image/project/SimonGame.png",
-//     title: "Simon Memory Game",
-//     role: "- JavaScript Development",
-//     info: "A classic memory game created using jQuery and DOM manipulation to enhance game logic and user engagement.",
-//     link: "https://vanshitapamnani.github.io/simon_challenge_game/",
-//   },
-
-//   {
-//     img: "image/project/TicTacToe.png",
-//     title: "Tic Tac Toe Game",
-//     role: "- JavaScript Development",
-//     info: "A two-player Tic Tac Toe game using HTML, CSS, and JavaScript with win detection logic.",
-//     link: "https://vanshitapamnani.github.io/tic-tac-toe-game/",
-//   },
-
-//   {
-//     img: "image/project/DiceGame.png",
-//     title: "Dice Game",
-//     role: "- Frontend (JavaScript)",
-//     info: "A simple two-player dice rolling game built with HTML, CSS, and JavaScript, using DOM manipulation to update scores and determine the winner.",
-//     link: "https://vanshitapamnani.github.io/Dice_Game/",
-//   },
-//   {
-//     img: "image/project/TinDog.png",
-//     title: "TinDog Landing Page",
-//     role: "- Frontend (Bootstrap)",
-//     info: "A responsive landing page built using HTML, CSS, and Bootstrap, designed for a fictional dog-matching startup.",
-//     link: "https://vanshitapamnani.github.io/Tin_Dog/",
-//   },
-// {
-//   img: "image/plus.svg",
-//   title: "Add New Project",
-//   role: "",
-//   info: "",
-// },
-
-// {
-//   img: "image/project/DiceGame.png",
-//   title: "",
-//   role: "",
-//   info: "",
-// },
-// ];
-
 function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -134,12 +57,15 @@ function Projects({ handleNext }) {
     );
     if (!confirmDelete) return;
     try {
-      await fetch(
+      const res = await fetch(
         `https://portfolio-backend-3-hm5b.onrender.com/api/projects/${id}`,
+
         {
           method: "DELETE",
         },
       );
+      console.log("Deleting project with ID:", id);
+      if (!res.ok) throw new Error(`Failed to delete : ${res.status}`);
       setProjects((prev) => prev.filter((p) => p._id !== id));
     } catch (err) {
       console.error("Error in deleting project:", err);
@@ -235,6 +161,7 @@ function Projects({ handleNext }) {
             onClick={() => {
               setShowForm(!showForm);
               setEditingProject(null);
+              setBase64Image("");
             }}>
             {showForm ? "Cancel" : "Add New Project"}
           </button>
@@ -271,7 +198,7 @@ function Projects({ handleNext }) {
                     `https://portfolio-backend-3-hm5b.onrender.com/api/projects/${editingProject._id}`,
                     {
                       method: "PUT",
-                      header: {
+                      headers: {
                         "Content-Type": "application/json",
                       },
                       body: JSON.stringify(newProject),
