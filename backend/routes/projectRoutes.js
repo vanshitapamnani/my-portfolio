@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Project = require("../models/Project");
 
+router.delete("/test", (req, res) => {
+  res.json({ message: "DELETE route works" });
+});
+
 router.post("/", async (req, res) => {
   try {
     const { img, title, role, info, link, stage, progress } = req.body;
