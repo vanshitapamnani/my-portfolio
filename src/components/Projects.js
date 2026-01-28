@@ -82,6 +82,7 @@ function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [base64Image, setBase64Image] = useState("");
 
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
@@ -89,6 +90,7 @@ function Projects({ handleNext }) {
   useEffect(() => {
     async function fetchProjects() {
       try {
+        setLoading(true);
         const res = await fetch(
           "https://portfolio-backend-3-hm5b.onrender.com/api/projects",
         );
@@ -97,6 +99,8 @@ function Projects({ handleNext }) {
         setProjects(data);
       } catch (err) {
         console.error("ERROR IN FETCHING PROJECTS : ", err);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -133,6 +137,12 @@ function Projects({ handleNext }) {
           understand real-world web development.
         </p>
       </div>
+
+      {loading && (
+        <div className="loading-container">
+          <p>Loading Projects...</p>
+        </div>
+      )}
       <div className="out-container">
         {visibleProjects.map((project, index) => (
           <div className="styling" key={index}>
