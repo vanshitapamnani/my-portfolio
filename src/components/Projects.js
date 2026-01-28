@@ -83,9 +83,12 @@ function Projects({ handleNext }) {
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [editingProject, setEditingProject] = useState(null);
   const [base64Image, setBase64Image] = useState("");
 
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
+
+  //DISPLAYING PROJECT ON RENDERING
 
   useEffect(() => {
     async function fetchProjects() {
@@ -118,9 +121,12 @@ function Projects({ handleNext }) {
       reader.onerror = (error) => reject(error);
     });
   }
-  // function handleEdit() {
-  //   return;
-  // }
+  function handleEdit(project) {
+    setEditingProject(project);
+    setShowForm(true);
+  }
+
+  //DELETING PROJECT
 
   async function handleDelete(id) {
     const confirmDelete = window.confirm(
@@ -208,7 +214,11 @@ function Projects({ handleNext }) {
                   onClick={() => handleDelete(project._id)}>
                   🗑️
                 </button>
-                <button className="action-btn2">✏️</button>
+                <button
+                  className="action-btn2"
+                  onClick={() => handleEdit(project)}>
+                  ✏️
+                </button>
               </div>
             </div>
           </div>
@@ -221,8 +231,12 @@ function Projects({ handleNext }) {
           </button>
         )}
         {!showAll && (
-          <button onClick={() => setShowForm(!showForm)}>
-            {showForm ? "cancel" : "Add New Project"}
+          <button
+            onClick={() => {
+              setShowForm(!showForm);
+              setEditingProject(null);
+            }}>
+            {showForm ? "Cancel" : "Add New Project"}
           </button>
         )}
       </div>
@@ -251,21 +265,43 @@ function Projects({ handleNext }) {
               console.log("submitting project:", newProject);
 
               try {
-                const res = await fetch(
-                  "https://portfolio-backend-3-hm5b.onrender.com/api/projects",
-                  {
-                    method: "POST",
-                    headers: {
-                      "content-type": "application/json",
+                //EDITING THE PROJECT
+                if (editingProject) {
+                  const res = await fetch(
+                    `https://portfolio-backend-3-hm5b.onrender.com/api/projects/${editingProject._id}`,
+                    {
+                      method: "PUT",
+                      header: {
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify(newProject),
                     },
-                    body: JSON.stringify(newProject),
-                  },
-                );
-                const data = await res.json();
-                console.log(data);
-                setProjects((prev) => [...prev, data.project]);
+                  );
+
+                  const data = await res.json();
+                  setProjects((prev) =>
+                    prev.map((p) =>
+                      p._id === editingProject._id ? data.project : p,
+                    ),
+                  );
+                } else {
+                  const res = await fetch(
+                    "https://portfolio-backend-3-hm5b.onrender.com/api/projects",
+                    {
+                      method: "POST",
+                      headers: {
+                        "content-type": "application/json",
+                      },
+                      body: JSON.stringify(newProject),
+                    },
+                  );
+                  const data = await res.json();
+                  console.log(data);
+                  setProjects((prev) => [...prev, data.project]);
+                }
                 e.target.reset();
                 setBase64Image("");
+                setEditingProject(null);
                 setShowForm(false);
               } catch (err) {
                 console.error("ERROR in Saving project: ", err);
@@ -299,21 +335,40 @@ function Projects({ handleNext }) {
               // )}
             />
             <label> Project Title:</label>
-            <input type="text" name="title" placeholder="Title" required />
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              defaultValue={editingProject?.title || ""}
+              required
+            />
             <label> Project Category:</label>
-            <input type="text" name="role" placeholder="Category" required />
+            <input
+              type="text"
+              name="role"
+              placeholder="Category"
+              defaultValue={editingProject?.role || ""}
+              required
+            />
             <label> Project Info:</label>
-            <input type="text" name="info" placeholder="Short Info" required />
+            <input
+              type="text"
+              name="info"
+              placeholder="Short Info"
+              defaultValue={editingProject?.info || ""}
+              required
+            />
             <label> Project Link:</label>
             <input
               type="text"
               name="link"
               placeholder="Link (GitHub Repo)"
+              defaultValue={editingProject?.link || ""}
               required
             />
 
             <label> Status :</label>
-            <select name="stage">
+            <select name="stage" defaultValue={editingProject?.stage || ""}>
               <option value="Completed"> Completed</option>
               <option value="In-Progress"> In Progress</option>
             </select>
@@ -322,14 +377,17 @@ function Projects({ handleNext }) {
             <input
               type="number"
               name="progress"
+              defaultValue={editingProject?.progress || "Completed"}
               placeholder="0-100"
               min="0"
-              max="100"></input>
+              max="100"
+            />
+
             <button
               type="submit"
               style={{ backgroundColor: "black" }}
               onClick={saveClick}>
-              Save Project
+              {editingProject ? "Update Project" : "Save Project"}
             </button>
           </form>
         )}
