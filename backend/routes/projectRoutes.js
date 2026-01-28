@@ -39,16 +39,21 @@ router.get("/", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deletedProject = await Project.findByIdAndDelete(id);
-    if (!deletedProject) {
-      return res.status(404).json({ message: "Project not found" });
-    }
-    res.status(200).json({ message: "Project deleted Successfully" });
-  } catch (error) {
-    res.status(500).json({ message: "Error in deleting project", error });
-  }
+  console.log("🔥 DELETE ROUTE HIT");
+  console.log("ID:", req.params.id);
+  return res.status(200).json({ message: "DELETE route works" });
 });
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const deletedProject = await Project.findByIdAndDelete(id);
+//     if (!deletedProject) {
+//       return res.status(404).json({ message: "Project not found" });
+//     }
+//     res.status(200).json({ message: "Project deleted Successfully" });
+//   } catch (error) {
+//     res.status(500).json({ message: "Error in deleting project", error });
+//   }
+// });
 
 module.exports = router;
