@@ -122,7 +122,23 @@ function Projects({ handleNext }) {
   //   return;
   // }
 
-  // function handleDelete() {}
+  async function handleDelete(id) {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this project ?",
+    );
+    if (!confirmDelete) return;
+    try {
+      await fetch(
+        `https://portfolio-backend-3-hm5b.onrender.com/api/projects/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
+      setProjects((prev) => prev.filter((p) => p._id !== id));
+    } catch (err) {
+      console.error("Error in deleting project:", err);
+    }
+  }
 
   return (
     <>
@@ -187,7 +203,11 @@ function Projects({ handleNext }) {
                 </p>
               )}
               <div className="action-btns">
-                <button className="action-btn1">🗑️</button>
+                <button
+                  className="action-btn1"
+                  onClick={() => handleDelete(project._id)}>
+                  🗑️
+                </button>
                 <button className="action-btn2">✏️</button>
               </div>
             </div>
