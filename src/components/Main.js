@@ -22,7 +22,7 @@ function Intro({ handleNext }) {
 
               <SocialIcon url="www.youtube.com/@vanshita_pamnani" />
               <SocialIcon url="https://discord.com/users/1388935183243284480" />
-              <SocialIcon url="https://www.instagram.com/mindful_muncher_/" />
+              <SocialIcon url="https://www.instagram.com/dietitian_in_kitchen/" />
               <SocialIcon url="https://www.reddit.com/user/Calm_Console/ " />
             </div>
           </div>
