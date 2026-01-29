@@ -13,7 +13,7 @@ function Intro({ handleNext }) {
             A DEVELOPER WHO LOVES BLENDING LOGIC WITH CREATIVITY. WHEN I'M NOT
             CODING, I'M DESIGNING EXPERIENCES THAT TELL STORIES.
           </h3>
-          <p> Code. Design. Create. Repeat. ✨</p>
+          <p> ✨ Code. Design. Create. Repeat. ✨</p>
           <div>
             <p> Fell Free To Connect.</p>
             <div className="info-outer">
