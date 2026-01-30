@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/project.css";
+import PasswordModal from "./PasswordModal";
 
 function Projects({ handleNext }) {
   const [showAll, setShowAll] = useState(false);
@@ -8,6 +9,8 @@ function Projects({ handleNext }) {
   const [loading, setLoading] = useState(true);
   const [editingProject, setEditingProject] = useState(null);
   const [base64Image, setBase64Image] = useState("");
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [pendingAction, setPendingAction] = useState(null);
 
   const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
@@ -137,12 +140,18 @@ function Projects({ handleNext }) {
               <div className="action-btns">
                 <button
                   className="action-btn1"
-                  onClick={() => handleDelete(project._id)}>
+                  onClick={() => {
+                    setPendingAction(() => () => handleDelete(project._id));
+                    setShowAuthModal(true);
+                  }}>
                   🗑️
                 </button>
                 <button
                   className="action-btn2"
-                  onClick={() => handleEdit(project)}>
+                  onClick={() => {
+                    setPendingAction(() => () => handleEdit(project));
+                    setShowAuthModal(true);
+                  }}>
                   ✏️
                 </button>
               </div>
@@ -159,9 +168,12 @@ function Projects({ handleNext }) {
         {!showAll && (
           <button
             onClick={() => {
-              setShowForm(!showForm);
-              setEditingProject(null);
-              setBase64Image("");
+              setPendingAction(() => () => {
+                setShowForm(!showForm);
+                setEditingProject(null);
+                setBase64Image("");
+              });
+              setShowAuthModal(true);
             }}>
             {showForm ? "Cancel" : "Add New Project"}
           </button>
@@ -326,6 +338,16 @@ function Projects({ handleNext }) {
       <div className="button-container">
         <button onClick={handleNext}>Next </button>
       </div>
+
+      {showAuthModal && (
+        <PasswordModal
+          onClose={() => setShowAuthModal(false)}
+          onSuccess={() => {
+            pendingAction?.();
+            setPendingAction(null);
+          }}
+        />
+      )}
     </>
   );
 }
