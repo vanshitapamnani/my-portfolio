@@ -11,7 +11,7 @@ function PasswordModal({ onSuccess, onClose }) {
         "https://portfolio-backend-3-hm5b.onrender.com/api/projects/verify",
         {
           method: "POST",
-          header: { "Content-type": "application/json" },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ password }),
         },
       );
