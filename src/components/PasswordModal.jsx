@@ -8,7 +8,7 @@ function PasswordModal({ onSuccess, onClose }) {
   async function handleVerify() {
     try {
       const res = await fetch(
-        "https://portfolio-backend-3-hm5b.onrender.com/api/verify",
+        "https://portfolio-backend-3-hm5b.onrender.com/api/projects/verify",
         {
           method: "POST",
           header: { "Content-type": "application/json" },
