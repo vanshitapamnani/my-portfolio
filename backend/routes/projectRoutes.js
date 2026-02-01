@@ -101,6 +101,15 @@ router.put("/:id", async (req, res) => {
 //     return res.status(500).json({ message: "Server error" });
 //   }
 // });
+// router.post("/verify", (req, res) => {
+//   console.log("BODY:", req.body);
+
+//   return res.status(200).json({
+//     receivedPassword: req.body.password,
+//     envPassword: process.env.ADMIN_PASSWORD,
+//   });
+// });
+
 router.post("/verify", (req, res) => {
   console.log("BODY:", req.body);
 
